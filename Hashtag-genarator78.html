@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashtag Generator</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #FF0000; /* YouTube red color */
+        }
+
+        #videoTitle {
+            padding: 10px;
+            margin: 10px;
+            width: 60%;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #FF0000; /* YouTube red color */
+            color: #ffffff; /* White text */
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #cc0000; /* Slightly darker shade on hover */
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hashtag Generator</h1>
+
+    <label for="videoTitle">Video Title:</label>
+    <input type="text" id="videoTitle">
+
+    <button onclick="generateHashtags()">Generate Hashtags</button>
+
+    <div id="result"></div>
+
+    <script>
+        function generateHashtags() {
+            var videoTitle = document.getElementById('videoTitle').value;
+            if (!videoTitle) {
+                alert('Please enter a video title');
+                return;
+            }
+
+            var words = videoTitle.split(' ');
+            var additionalWords = ['youtube', 'reels', 'content', 'video'];
+            var allWords = words.concat(additionalWords);
+
+            var numHashtags = 5;
+            var result = [];
+
+            for (var i = 0; i < numHashtags; i++) {
+                var shuffledWords = allWords.slice().sort(function() { return 0.5 - Math.random() });
+                var hashtag = '#' + shuffledWords.slice(0, Math.floor(Math.random() * shuffledWords.length) + 1).join('');
+                result.push(hashtag);
+            }
+
+            document.getElementById('result').innerHTML = result.join('<br>');
+        }
+    </script>
+<style> .bbk { color:grey; margin-top:400px; </style>
+   <p class="bbk"> This site is developed <br> by Reikon aka Priyam Ankit </p>
+
+
+</body>
+</html>
